@@ -1,3 +1,38 @@
-<div id="container">
-
+<div id="bodydiv">
+  <div id="login">
+    <h1>LogKeep</h1>
+    <form id="login_form">
+      <input type="text" name="email" placeholder="email"><br>
+      <input type="password" name="password" placeholder="password"><br>
+      <div class='buttondiv'>
+        <h3><a href="/login">Log in.</a></h3>
+      </div><br>
+      <a id='new_user' href="new_user">Create an account.</a>
+    </form>
+    <div id="google_login">
+      <p>Or sign in with Google+ bellow</p>
+      <span id="signinButton">
+        <span
+          class="g-signin"
+          data-callback="signinCallback"
+          data-clientid="1051954874614-1gcpkand8btdp5rfgnrutog0o7e2old1.apps.googleusercontent.com"
+          data-cookiepolicy="single_host_origin"
+          data-requestvisibleactions="http://schemas.google.com/AddActivity"
+          data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email">
+        </span>
+      </span>
+    </div>
+  </div>
 </div>
+
+  <div id="new_user_form" style="display: none;">
+      <input type="text" name="user[name]" placeholder="name"><br>
+      <input type="text" name="user[email]" placeholder="email"><br>
+      <input type="password" name="password" placeholder="password"><br>
+      <input type="password" name="password_confirmation" placeholder="confirm password"><br>
+      <p>All fields are mandatory.</p>
+      <div class='buttondiv'>
+        <h3><a id="create_user" href="#">Create user</a></h3>
+      </div><br>
+
+  </div>

@@ -1,0 +1,62 @@
+/*Red: B22B05
+Pastel: FF6337
+Orange: FF5221
+Lgray: ADB8B5
+Dgray: 525252*/
+
+
+#bodydiv {
+  min-width: 600px;
+  width: 80%;
+  margin: auto;
+  height: 600px;
+}
+
+#login {
+  margin: 20px auto 0px auto;
+  padding: 20px;
+  width: 400px;
+  border: 3px solid #525252;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.buttondiv {
+  position:relative;
+  display:block;
+  background-color: #FF5221;
+  color: #525252;
+  width: 209px;
+  height: 25px;
+  border: 3px solid #525252;
+  margin: 10px auto 0 auto;
+  line-height: 25px;
+  border-radius: 8px;
+}
+
+.buttondiv:hover {
+  background-color: #B22B05;
+}
+
+.buttondiv a {
+  margin-top:  auto;
+  margin-bottom: auto;
+  text-decoration: none;
+  vertical-align: middle;
+}
+.buttondiv h3 {
+  display: inline;
+}
+
+.buttondiv a:visited {
+  text-decoration: none;
+  color: #525252;
+}
+
+.buttondiv a:hover {
+  text-decoration: none;
+}
+
+#google_login {
+  margin-top: 20px;
+}
