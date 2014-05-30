@@ -12,7 +12,7 @@
     <div data-component="event-list" class='event-list'>
       <div class="eve-header-div content">
       <header data-component="main-header" class="in-line">Events</header>
-      <button data-component="new-eve" class="button in-line float-r">New Event</button>
+      <button data-component="new-eve" class="button in-line float-r">New event</button>
     </div>
     <%@events.each do |event|%>
       <div data-event="<%=event.id%>" class="event">
@@ -30,7 +30,7 @@
       Event title: <input type="text" name="title" size="40" class='bmargin-5'placeholder="enter a title"><br>
       Event description:<br>
       <div class='bmargin-5'><textarea name='description' rows="10" cols="50" placeholder="enter a description here." class="hcenter"></textarea></div><br>
-      <input id='ceve' data-component="create-log" type="submit" value="Create log" class='float-r button bmargin-5'><br>
+      <input id='ceve' data-component="create-log" type="submit" value="Create event" class='float-r button bmargin-5'><br>
     </form>
   </div>
 </div>

@@ -9,7 +9,8 @@ function bindEvents() {
   $(component("new-log-form-container")).on('click','#clog', createLog)
   $(component("log-list")).on('click',component("view-log"), viewLog)
   $('body').on('click', 'a.close', closePopUp)
-  $('div.eve-header-div').on('click',component("new-eve"), dispEveForm)
+  $('body').on('click',component("new-eve"), dispEveForm)
+  $('body').on('click','#ceve', createEve)
 }
 
 
@@ -31,7 +32,7 @@ function dispEveForm(e) {
   e.preventDefault()
   var eveTemplate = $.trim($(component('eve-form')).html());
   $(component('new-eve-form-container')).append($(eveTemplate));
-  //removeNewEveButton()
+  removeNewEveButton()
 }
 
 function component(comp){
@@ -40,14 +41,26 @@ function component(comp){
 
 function createLog(e){
   e.preventDefault()
-  var formStuff = $(component('new-log-form-container')).find('form')
   var ajaxReq = $.ajax({
-    url: 'posts/create',
+    url: 'logs/create',
     type: 'POST',
     data: $(component('new-log-form-container')).find('form').serialize()
   })
   ajaxReq.done(newLogTasks)
 }
+
+function createEve(e){
+  e.preventDefault
+  debugger
+  var ajaxReq = $.ajax({
+    url: 'events/create',
+    type: 'POST',
+    data: $(component('new-eve-form-container')).find('form').serialize()
+  })
+  //ajaxReq.done(newLogTasks)
+}
+
+
 
 function newLogTasks(iGot){
   prependLog(iGot)
@@ -57,6 +70,10 @@ function newLogTasks(iGot){
 
 function removeNewPostButton(){
   $(component('new-log')).remove()
+}
+
+function removeNewEveButton(){
+  $(component('new-eve')).remove()
 }
 
 function regenNewPostButton(){

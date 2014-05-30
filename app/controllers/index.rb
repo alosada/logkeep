@@ -28,7 +28,7 @@ post '/users/create' do
     redirect '/'
 end
 
-post '/posts/create' do
+post '/logs/create' do
   @log=Log.new(user_id: session[:id], title: params[:title], description: params[:description])
   if @log.save
     status 200
@@ -38,6 +38,18 @@ post '/posts/create' do
   erb :_log, :layout => false
 end
 
+post '/events/create' do
+  p params
+  @eve=Event.new(user_id: session[:id], log_id: session[:log], title: params[:title], description: params[:description])
+  if @eve.save
+    p 'we have eve'
+    status 200
+  else
+    status 418
+  end
+  #erb :_log, :layout => false
+end
+
 post '/kl-login' do
   authenticate(params[:email], params[:password])
   redirect to '/'
@@ -45,8 +57,9 @@ end
 
 post '/logs/view' do
   @log=Log.find(params["id"])
+  session[:log]=@log.id
   @events=@log.events
-  erb :_viewlog
+  erb :_viewlog, :layout => false
 end
 
 #### TEST ROUTS ###

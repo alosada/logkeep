@@ -98,6 +98,14 @@ dteal: 00B27F*/
   margin: 4px auto 16px auto;
 }
 
+.eve-header-div {
+  overflow: auto;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 2px solid #525252;
+  margin: 4px auto 16px auto;
+}
+
 .dgray {
   color:#525252;
 }
