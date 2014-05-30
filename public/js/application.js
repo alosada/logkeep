@@ -7,7 +7,7 @@ function bindEvents() {
   $('form').on('click', '#new_user', newUser)
   $('div.header-div').on('click', component("new-log"), dispForm)
   $(component("new-log-form-container")).on('click','#clog', createLog)
-  $('div.log').on('click',component("view-log"), viewLog)
+  $(component("log-list")).on('click',component("view-log"), viewLog)
   $('body').on('click', 'a.close', closePopUp)
 }
 
@@ -63,11 +63,6 @@ function prependLog(log){
   $(component('log-list')).prepend(log)
 }
 
-//function viewLog(e){
-//  e.preventDefault
-//  $('body').prepend("<div id='pop-up'><a href='#' class='float-r close'>X</a></div>")
-//}
-
 function popUp(popup){
   $('body').prepend(popup)
 }
@@ -79,7 +74,8 @@ function closePopUp(e){
 
 function viewLog(e){
   e.preventDefault()
-  var id = {id: e.delegateTarget.getAttribute("data-component")}
+  //debugger
+  var id = {id: this.href.substr(22,99)}
   var ajaxReq = $.ajax({
     url: 'logs/view',
     type: 'POST',

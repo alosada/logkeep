@@ -9,8 +9,8 @@ helpers do
   end
 
   def authenticate(email,pw)
-    if valid_login?(email)
-      user=User.find_by_email(email)
+    if valid_login?(email.downcase)
+      user=User.find_by_email(email.downcase)
       session[:id]=user.id if user.password == params[:password]
     end
   end

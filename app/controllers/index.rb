@@ -19,6 +19,7 @@ end
 post '/users/create' do
     @user = User.new(params[:user])
     @user.password = params[:password]
+    @user.email.downcase!
     if @user.save
       status 200
     else
