@@ -17,6 +17,7 @@ gem 'rake'
 
 gem 'shotgun'
 gem 'bcrypt'
+gem 'rspec'
 
 group :test do
   gem 'shoulda-matchers'
@@ -24,7 +25,6 @@ group :test do
 end
 
 group :test, :development do
-  gem 'rspec'
   gem 'factory_girl'
   gem 'faker'
 end
