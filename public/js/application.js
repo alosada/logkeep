@@ -9,6 +9,7 @@ function bindEvents() {
   $(component("new-log-form-container")).on('click','#clog', createLog)
   $(component("log-list")).on('click',component("view-log"), viewLog)
   $('body').on('click', 'a.close', closePopUp)
+  $('div.eve-header-div').on('click',component("new-eve"), dispEveForm)
 }
 
 
@@ -24,6 +25,13 @@ function dispForm(e) {
   var postTemplate = $.trim($(component('hidden-form')).html());
   $(component('new-log-form-container')).append($(postTemplate));
   removeNewPostButton()
+}
+
+function dispEveForm(e) {
+  e.preventDefault()
+  var eveTemplate = $.trim($(component('eve-form')).html());
+  $(component('new-eve-form-container')).append($(eveTemplate));
+  //removeNewEveButton()
 }
 
 function component(comp){
@@ -74,8 +82,7 @@ function closePopUp(e){
 
 function viewLog(e){
   e.preventDefault()
-  //debugger
-  var id = {id: this.href.substr(22,99)}
+  var id = {id: this.name}
   var ajaxReq = $.ajax({
     url: 'logs/view',
     type: 'POST',

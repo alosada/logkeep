@@ -7,10 +7,10 @@
       <p data-component="log-started" class='in-line'>Start date:<%=@log.created_at%></p>
       <p data-component="log-closed" class='in-line'>End date: <%=@log.open ? ('Open log'): (@log.updated_at)%></p><br>
       <p data-component="log-events" class='in-line'>Events: <%=@log.events.length%></p>
-      <a data-component="view-log" class='in-line float-r' href="#">View log</a><br>
     </div>
+    <div data-component="new-eve-form-container"></div>
     <div data-component="event-list" class='event-list'>
-      <div class="header-div content">
+      <div class="eve-header-div content">
       <header data-component="main-header" class="in-line">Events</header>
       <button data-component="new-eve" class="button in-line float-r">New Event</button>
     </div>
@@ -24,13 +24,13 @@
     </div>
 </div>
 
-<div  data-component="event-form" style="display: none">
-  <div data-component="log-template" class="log">
+<div  data-component="eve-form" style="display: none">
+  <div data-component="eve-template" class="log">
     <form data-component="log-form">
       Event title: <input type="text" name="title" size="40" class='bmargin-5'placeholder="enter a title"><br>
       Event description:<br>
       <div class='bmargin-5'><textarea name='description' rows="10" cols="50" placeholder="enter a description here." class="hcenter"></textarea></div><br>
-      <input id='clog' data-component="create-log" type="submit" value="Create log" class='float-r button bmargin-5'><br>
+      <input id='ceve' data-component="create-log" type="submit" value="Create log" class='float-r button bmargin-5'><br>
     </form>
   </div>
 </div>
