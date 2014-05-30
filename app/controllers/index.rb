@@ -67,3 +67,7 @@ end
 get '/ses' do
   "#{session}"
 end
+
+get '/map' do
+  erb :_map, :layout => false
+end

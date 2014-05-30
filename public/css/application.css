@@ -140,12 +140,6 @@ dteal: 00B27F*/
   z-index:9000;
 }
 
-.close {
-  text-decoration: none;
-  color: black;
-  background-color: #B22B05;
-}
-
 .pop-up-body {
   overflow: auto;
   width: 600px;
@@ -156,4 +150,9 @@ dteal: 00B27F*/
   border-radius: 10px;
   padding: 8px;
   border: 2px solid #525252;
+}
+
+ img.close{
+    width:20px;
+    height: auto;
 }

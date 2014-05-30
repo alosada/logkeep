@@ -51,7 +51,6 @@ function createLog(e){
 
 function createEve(e){
   e.preventDefault
-  debugger
   var ajaxReq = $.ajax({
     url: 'events/create',
     type: 'POST',
@@ -114,6 +113,29 @@ function test(e){
   e.preventDefault()
   debugger
 }
+
+function initialize() {
+  var mapOptions = {
+    center: new google.maps.LatLng(37.784, -122.397),
+    zoom: 8
+  };
+  var map = new google.maps.Map(document.getElementById("map-canvas"),
+      mapOptions);
+}
+
+
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(test);
+    }
+  //else{somevar.innerHTML="Geolocation is not supported by this browser.";}
+  }
+function showPosition(position)
+  {
+  x.innerHTML="Latitude: " + position.coords.latitude +
+  "<br>
 
 // e.delegateTarget.getAttribute("data-component")
 

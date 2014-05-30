@@ -1,6 +1,6 @@
 <div id='pop-up'>
   <div class='pop-up-body'>
-    <a href='#' class='float-r close'>X</a><br>
+    <a href='#' class='float-r close'><img class='close' src="http://files.softicons.com/download/application-icons/32x32-free-design-icons-by-aha-soft/png/32/Close.png"></a><br>
     <div data-component="<%=@log.id%>" class="log">
       <header data-component="log-title"><%=@log.title%></header>
       <p data-component="log-description"><%=@log.description%></p><br>
@@ -28,9 +28,12 @@
   <div data-component="eve-template" class="log">
     <form data-component="log-form">
       Event title: <input type="text" name="title" size="40" class='bmargin-5'placeholder="enter a title"><br>
-      Event description:<br>
+      Start: <input type="datetime" name="start_time"class='bmargin-5'><br>
+      Estimated end: <input type="datetime" name="end_time"class='bmargin-5'><br>
+      Description:<br>
       <div class='bmargin-5'><textarea name='description' rows="10" cols="50" placeholder="enter a description here." class="hcenter"></textarea></div><br>
       <input id='ceve' data-component="create-log" type="submit" value="Create event" class='float-r button bmargin-5'><br>
     </form>
+      <form>Location: <input type="text" name="location" size="40" class='bmargin-5'placeholder="enter a title"><button name='location' type='submit'>Find</button><br><form>
   </div>
 </div>
