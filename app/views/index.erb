@@ -1,38 +1,48 @@
-<div id="bodydiv">
-  <div id="login">
-    <h1>LogKeep</h1>
-    <form id="login_form">
-      <input type="text" name="email" placeholder="email"><br>
-      <input type="password" name="password" placeholder="password"><br>
-      <div class='buttondiv'>
-        <h3><a href="/login">Log in.</a></h3>
-      </div><br>
-      <a id='new_user' href="new_user">Create an account.</a>
-    </form>
-    <div id="google_login">
-      <p>Or sign in with Google+ bellow</p>
-      <span id="signinButton">
-        <span
-          class="g-signin"
-          data-callback="signinCallback"
-          data-clientid="1051954874614-1gcpkand8btdp5rfgnrutog0o7e2old1.apps.googleusercontent.com"
-          data-cookiepolicy="single_host_origin"
-          data-requestvisibleactions="http://schemas.google.com/AddActivity"
-          data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email">
-        </span>
-      </span>
+<div data-component='navbar' class="top-bar">
+  <header data-component='navbar' class='in-line float-l'><span class='lgray'>Log</span><span class='orange'>Keep</span></header>
+  <a class='in-line float-r' href="/logoff">Log off</a>
+</div>
+<div class="bodydiv">
+  <div data-component="new-log-form-container"></div>
+    <div class="header-div content">
+      <header data-component="main-header" class="in-line">Posts</header>
+      <button data-component="new-log" class="button in-line float-r">New Post</button>
     </div>
+  <div data-component="log-list" class="content">
+    <% @logs.each do |log| %>
+    <div data-component="<%=log.id%>" class="log">
+      <header data-component="log-title"><%=log.title%></header>
+      <p data-component="log-description" class="limit-text"><%=log.description%></p><br>
+      <p data-component="log-started" class='in-line'>Start date:<%=log.created_at%></p>
+      <p data-component="log-closed" class='in-line'>End date: <%=log.open ? ('Open log'): (log.updated_at)%></p><br>
+      <p data-component="log-events" class='in-line'>Events: <%=log.events.length%></p>
+      <a data-component="view-log" class='in-line float-r' href="#">View log</a><br>
+    </div>
+    <%end%>
+  </div>
   </div>
 </div>
 
-  <div id="new_user_form" style="display: none;">
-      <input type="text" name="user[name]" placeholder="name"><br>
-      <input type="text" name="user[email]" placeholder="email"><br>
-      <input type="password" name="password" placeholder="password"><br>
-      <input type="password" name="password_confirmation" placeholder="confirm password"><br>
-      <p>All fields are mandatory.</p>
-      <div class='buttondiv'>
-        <h3><a id="create_user" href="#">Create user</a></h3>
-      </div><br>
-
+<div  data-component="hidden-form" style="display: none">
+  <div data-component="log-template" class="log">
+    <form data-component="log-form">
+      Log title: <input type="text" name="title" size="50" class='bmargin-5'placeholder="enter a title"><br>
+      Log description:<br>
+      <div class='bmargin-5'><textarea name='description' rows="10" cols="60" placeholder="enter a description here." class="hcenter"></textarea></div><br>
+      <input id='clog' data-component="create-log" type="submit" value="Create log" class='float-r button bmargin-5'><br>
+    </form>
   </div>
+</div>
+
+
+
+ <div  class="hidden-template" style="display: none">
+  <div data-component="log" class="log">
+    <header data-component="log-title"></header>
+    <p data-component="log-description"></p>
+    <p data-component="log-started" class='in-line'></p>
+    <p data-component="log-closed" class='in-line'></p>
+    <p data-component="log-events" class='in-line'></p>
+    <a data-component="view-log" class='in-line' href="#">View log</a><br>
+  </div>
+</div>

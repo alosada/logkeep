@@ -1,11 +1,9 @@
 class CreateLogs < ActiveRecord::Migration
   def change
-    create_table :users do |t|
+    create_table :logs do |t|
       t.string  :title
       t.text  :description
-      t.boolean :open
-      t.date  :start_date
-      t.date :end_date
+      t.boolean :open, default: true
       t.integer :user_id
       t.timestamps
     end

@@ -1,0 +1,27 @@
+<div id="bodydiv">
+  <div id="login">
+    <h1><span class='dgray'>Log</span><span class='orange'>Keep</span></h1>
+    <form id="login_form">
+      <input type="text" name="email" placeholder="email"><br>
+      <input type="password" name="password" placeholder="password"><br>
+      <button class='button' formaction="/kl-login" formmethod="post">
+        Log in
+      </button><br>
+      <a id='new_user' href="new_user">Create an account.</a>
+    </form>
+    <div id="linkedin_login">
+      <!-- <p>Or sign in with LinkedIn bellow</p> -->
+    </div>
+  </div>
+</div>
+
+  <div id="new_user_form" style="display: none;">
+      <input type="text" name="user[name]" placeholder="name"><br>
+      <input type="text" name="user[email]" placeholder="email"><br>
+      <input type="password" name="password" placeholder="password"><br>
+      <input type="password" name="password_confirmation" placeholder="confirm password"><br>
+      <p>All fields are mandatory.</p>
+      <button class='button' type='submit' formaction="/users/create" formmethod="post">Create user
+      </button><br>
+
+  </div>

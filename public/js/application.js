@@ -4,46 +4,96 @@ $(document).ready(function() {
 
 
 function bindEvents() {
-  $('form').on('click', '#new_user', newUserForm)
-  $('form').on('click', '#create_user', createUser)
+  $('form').on('click', '#new_user', newUser)
+  $('div.header-div').on('click', component("new-log"), dispForm)
+  $(component("new-log-form-container")).on('click','#clog', createLog)
+  $('div.log').on('click',component("view-log"), viewLog)
+  $('body').on('click', 'a.close', closePopUp)
 }
 
 
-function newUserForm(e) {
+function newUser(e) {
   e.preventDefault()
-  var nuform = $.trim($('#new_user_form').html());
+  var newUserForm = $.trim($('#new_user_form').html());
   $('#login_form').text('')
-  $('#login_form').append(nuform)
+  $('#login_form').append(newUserForm)
 }
 
-function createUser(e) {
+function dispForm(e) {
   e.preventDefault()
-  //debugger
-  var ajaxRequest = $.ajax({
-    url: '/users/create',
-    type: 'POST',
-    data: $('form').serialize()
-  })
+  var postTemplate = $.trim($(component('hidden-form')).html());
+  $(component('new-log-form-container')).append($(postTemplate));
+  removeNewPostButton()
 }
 
-function signinCallback(authResult) {
-  if (authResult['status']['signed_in']) {
-    // Update the app to reflect a signed in user
-    debugger
-    var ajaxRequest = $.ajax({
-    url: '/google_login',
-    type: 'POST',
-    data: {token: authResult.access_token}
-  })
-  ajaxRequest.done(console.log('working'))
-    // Hide the sign-in button now that the user is authorized, for example:
-    document.getElementById('signinButton').setAttribute('style', 'display: none');
-  } else {
-    // Update the app to reflect a signed out user
-    // Possible error values:
-    //   "user_signed_out" - User is signed-out
-    //   "access_denied" - User denied access to your app
-    //   "immediate_failed" - Could not automatically log in the user
-    console.log('Sign-in state: ' + authResult['error']);
-  }
+function component(comp){
+  return "[data-component='"+comp+"']"
 }
+
+function createLog(e){
+  e.preventDefault()
+  var formStuff = $(component('new-log-form-container')).find('form')
+  var ajaxReq = $.ajax({
+    url: 'posts/create',
+    type: 'POST',
+    data: $(component('new-log-form-container')).find('form').serialize()
+  })
+  ajaxReq.done(newLogTasks)
+}
+
+function newLogTasks(iGot){
+  prependLog(iGot)
+  regenNewPostButton()
+  clearNewPostForm()
+}
+
+function removeNewPostButton(){
+  $(component('new-log')).remove()
+}
+
+function regenNewPostButton(){
+$('div.header-div').append("<button data-component='new-log' class='button in-line float-r'>New Post</button>")
+}
+
+function clearNewPostForm(){
+  $(component('new-log-form-container'))[0].innerHTML=''
+}
+
+function prependLog(log){
+  $(component('log-list')).prepend(log)
+}
+
+//function viewLog(e){
+//  e.preventDefault
+//  $('body').prepend("<div id='pop-up'><a href='#' class='float-r close'>X</a></div>")
+//}
+
+function popUp(popup){
+  $('body').prepend(popup)
+}
+
+function closePopUp(e){
+  e.preventDefault
+  $('#pop-up').remove()
+}
+
+function viewLog(e){
+  e.preventDefault()
+  var id = {id: e.delegateTarget.getAttribute("data-component")}
+  var ajaxReq = $.ajax({
+    url: 'logs/view',
+    type: 'POST',
+    data: id
+  })
+  ajaxReq.done(popUp)
+}
+
+
+////test
+function test(e){
+  e.preventDefault()
+  debugger
+}
+
+// e.delegateTarget.getAttribute("data-component")
+

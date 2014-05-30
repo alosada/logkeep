@@ -1,7 +1,7 @@
 helpers do
 
   def logged?
-    if session[:token]
+    if session[:id]
       return true
     else
       return false
@@ -11,16 +11,16 @@ helpers do
   def authenticate(email,pw)
     if valid_login?(email)
       user=User.find_by_email(email)
-      if user.password == params[:password]
-        session[:id]=user.id
-        session[:token] = SecureRandom.hex
-      end
-    else
-      "Invalid email"
+      session[:id]=user.id if user.password == params[:password]
     end
   end
 
   def valid_login?(email)
-    !Users.where(email: email).empty?
+    !User.where(email: email).empty?
   end
+
+  def log_off
+    session.clear
+  end
+
 end

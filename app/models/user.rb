@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   validates :name, :email, presence: true
   validates :email, uniqueness: true
   validates :password, confirmation: true
+  has_many :logs
+  #has_many :logs, through: :colaborators
 
     def password
       @password ||= Password.new(password_hash)
